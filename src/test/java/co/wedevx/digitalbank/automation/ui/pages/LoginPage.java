@@ -25,7 +25,7 @@ public class LoginPage extends BasePage{
     private WebElement submitBtn;
 
     @FindBy(xpath = "//a[contains(text), 'Sign Up Here']")
-    private WebElement singUoHereLink;
+    private WebElement singUpHereLink;
     //we need to create action methods
     public void login(String username,String password){
         usernameTxBox.sendKeys(username);

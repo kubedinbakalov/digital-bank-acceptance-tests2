@@ -33,9 +33,9 @@ public class DBUtils {
 
    //create a method that can dynamically send select statements
     //and returns a list of map of all colons
-    public static List<Map<String, Objects>> runSQLSelectQuery(String sqlQuery){
+    public static List<Map<String, Object>> runSQLSelectQuery(String sqlQuery){
 
-        List<Map<String,Objects>> dbResultList = new ArrayList<>();
+        List<Map<String,Object>> dbResultList = new ArrayList<>();
 
         try {
             statement = connection.createStatement();
@@ -47,10 +47,10 @@ public class DBUtils {
 
             while(resultSet.next()){
 
-                Map<String,Objects> rowMap = new HashMap<>();
+                Map<String,Object> rowMap = new HashMap<>();
 
                 for(int colum = 1; colum <= columCount; colum++){
-                    rowMap.put(resultSetMetaData.getColumnName(colum), (Objects) resultSet.getObject(colum));
+                    rowMap.put(resultSetMetaData.getColumnName(colum), resultSet.getObject(colum));
                 }
                 dbResultList.add(rowMap);
 
@@ -94,3 +94,5 @@ public class DBUtils {
         }
     }
 }
+
+

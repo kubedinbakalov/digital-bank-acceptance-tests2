@@ -1,7 +1,7 @@
 Feature: Creating a new checking account
 
   Scenario: Create a standard individual checking account
-    Given the user logged in as "emailK@gmail.com" "Email1228"
+    Given the user logged in as "Elon@gmail.com" "Email1228"
     When the user creates a new checking account with the following data
       |checkingAccountType|accountOwnerShip|accountName              |initialDepositAmount|
       |Standard Checking  |Individual      |Elon Musk Second Checking|10000.00            |

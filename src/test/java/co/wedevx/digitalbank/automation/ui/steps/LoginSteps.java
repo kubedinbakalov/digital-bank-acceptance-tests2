@@ -17,11 +17,11 @@ public class LoginSteps {
         WebDriverManager.firefoxdriver().setup();
     }
     WebDriver driver = Driver.getDriver();
-   // WebDriver driver = new FirefoxDriver();
 
     @Given("the user is on the home page")
     public void the_user_is_on_the_home_page() {
-        driver.get("https://dbank-qa.wedevx.co/bank/login");
+
+        driver.get("http://kubedinbakalov.mydevx.com/bank/login");
     }
     @Given("the user populates the username field with {string}")
     public void the_user_populates_the_username_field_with(String username) {

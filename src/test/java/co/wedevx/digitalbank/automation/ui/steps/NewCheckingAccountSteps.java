@@ -21,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class NewCheckingAccountSteps {
     WebDriver driver = Driver.getDriver();
-  // WebDriver driver = new FirefoxDriver();
     private final LoginPage loginPage = new LoginPage(driver);
     private CreateCheckingPage createNewChecking = new CreateCheckingPage(driver);
     private ViewCheckingAccountPage viewCheckingAccountPage = new ViewCheckingAccountPage(driver);

@@ -12,8 +12,6 @@ import java.util.Map;
 
 public class RegistrationPage extends BasePage{
 
-    MockData mockData = new MockData();
-
     public RegistrationPage(WebDriver driver) {
 
         super(driver);

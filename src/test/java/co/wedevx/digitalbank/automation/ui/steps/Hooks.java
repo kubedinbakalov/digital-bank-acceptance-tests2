@@ -8,8 +8,8 @@ import static co.wedevx.digitalbank.automation.ui.utils.Driver.getDriver;
 
 public class Hooks {
 
-    @BeforeAll()
-    public static void establishConnectionToDB(){
+    @Before("@Registration")
+    public void establishConnectionToDB(){
         DBUtils.establishConnection();
         DBUtils.runSQLUpdateQuery("DELETE FROM user_profile where email_address");
     }
@@ -17,7 +17,7 @@ public class Hooks {
     @Before("not @Registration")
     public void the_user_is_on_d_bank_homepage(){
 
-        getDriver().get("https://dbank-qa.wedevx.co/bank/login");
+        getDriver().get("http://kubedinbakalov.mydevx.com/bank/login");
     }
 
     @After("not @NegativeRegistrationCases")
@@ -28,6 +28,7 @@ public class Hooks {
 
     @AfterAll()
     public static void closeConnectionToDB(){
+
         DBUtils.closeConnection();
     }
 }
