@@ -1,5 +1,5 @@
 Feature: Creating a new checking account
-
+@Test
   Scenario: Create a standard individual checking account
     Given the user logged in as "Elon@gmail.com" "Email1228"
     When the user creates a new checking account with the following data
