@@ -20,7 +20,7 @@ public class DBUtils {
 
        // String password = "zkqtvfvhaquikilb";
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             //connection = DriverManager.getConnection(url,username,password);
             connection = DriverManager.getConnection(
                     getPropertiesValue("digitalbank.db.url"),
