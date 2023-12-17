@@ -12,13 +12,13 @@ public class DBUtils {
    private static ResultSet resultSet = null;
 
     //create a method to establish connection with the db
-    public static void establishConnection(){
+    public static void establishConnection() throws SQLException {
 
-       // String url = "jdbc:mysql://3.249.240.23:3306/kubedinbakalov";
+       // String url = "jdbc:mysql://3.249.240.23:3306/kubedinb509";//==digitalbank.db.url
 
-       // String username = "kubedinbakalov";
+       // String username = "kubedinb509";//==digitalbank.db.username
 
-       // String password = "zkqtvfvhaquikilb";
+       // String password = "gjgomhpvulelbxyv";//==digitalbank.db.password
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             //connection = DriverManager.getConnection(url,username,password);
@@ -27,7 +27,11 @@ public class DBUtils {
                     getPropertiesValue("digitalbank.db.username"),
                     getPropertiesValue("digitalbank.db.password"));
         } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
+
+            System.err.println("Unable to establish Connection");
+           // throw new RuntimeException(e);
+            e.printStackTrace();
+            throw new SQLException("Unable to establish DB Connection");
         }
     }
 

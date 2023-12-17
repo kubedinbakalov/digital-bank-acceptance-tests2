@@ -77,10 +77,10 @@ public class RegistrationPage extends BasePage{
     private WebElement workPhoneTxt;
 
     @FindBy(name = "agree-terms")
-    WebElement agreeTermsCheckBox;
+    private WebElement agreeTermsCheckBox;
 
     @FindBy(xpath ="//button" )
-    WebElement registerButton;
+    private WebElement registerButton;
 
     @FindBy(xpath ="//div[@class='sufee-alert alert with-close alert-success alert-dismissible fade show']")
     private WebElement messageLabel;

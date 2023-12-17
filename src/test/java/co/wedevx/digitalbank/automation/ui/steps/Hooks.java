@@ -4,23 +4,25 @@ import co.wedevx.digitalbank.automation.ui.utils.DBUtils;
 import co.wedevx.digitalbank.automation.ui.utils.Driver;
 import io.cucumber.java.*;
 
+import java.sql.SQLException;
+
 import static co.wedevx.digitalbank.automation.ui.utils.Driver.getDriver;
 
 public class Hooks {
 
-    @Before("@Registration")
-    public void establishConnectionToDB(){
+    @Before("@DB")
+    public void establishConnectionToDB() throws SQLException {
         DBUtils.establishConnection();
-        DBUtils.runSQLUpdateQuery("DELETE FROM user_profile where email_address");
+       // DBUtils.runSQLUpdateQuery("DELETE FROM user_profile where email_address");
     }
 
-    @Before("not @Registration")
+    @Before("not @DB")
     public void the_user_is_on_d_bank_homepage(){
 
-        getDriver().get("http://kubedinbakalov.mydevx.com/bank/login");
+        getDriver().get("http://kubedinb509.mydevx.com/bank/login");
     }
 
-    @After("not @NegativeRegistrationCases")
+     @After("not @NegativeRegistrationCases")
     public void afterEachScenario(Scenario scenario) {
         Driver.takeScreenShot(scenario);
         Driver.closeDriver();
