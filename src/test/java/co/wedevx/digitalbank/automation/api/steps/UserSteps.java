@@ -61,7 +61,7 @@ public class UserSteps {
         UserAPIModel testUser = objectMapper.readValue(response.asString(), UserAPIModel.class);
 
         System.out.println(testUser.getId());
-        testUserId = testUser.getId();
+        testUserId = testUser.getId();//we used in endpoint create account AccountSteps user/{id}/account
 
         System.out.println(testUser.getUsername());
     }

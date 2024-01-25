@@ -38,7 +38,7 @@ public class NewCheckingAccountSteps {
     @Then("the user should see the green {string} message.")
     public void the_user_should_see_the_green_message(String expectedConfirmationMessage) {
 
-        expectedConfirmationMessage = "Confirmation " + expectedConfirmationMessage + "\n×";
+        expectedConfirmationMessage = "Confirmation " + expectedConfirmationMessage + " ×";
         assertEquals(expectedConfirmationMessage,viewCheckingAccountPage.getAccountCreateAccountConfirmationMessage());
     }
     @Then("the user should see newly added account card")

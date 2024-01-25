@@ -78,7 +78,7 @@ public class RegistrationSteps {
         assertEquals(expectedUserInfoMap.get("email"),actualUserInfoMap.get("username"),"username mismatch upon registration");
 
         assertEquals(nextValList.get(0).get("next_val"),actualUserInfoMap.get("id"),"Id mismatch");
-        long expectedUserProfileId = Integer.parseInt(String.valueOf(nextValList.get(0).get("next_val")));
+        long expectedUserProfileId = Long.parseLong(String.valueOf(nextValList.get(0).get("next_val")));
         assertEquals(++expectedUserProfileId,actualUserProfileInfoMap.get("id"),"Id mismatch");
     }
 

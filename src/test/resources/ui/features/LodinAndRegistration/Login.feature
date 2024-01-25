@@ -1,11 +1,12 @@
 Feature: login
-
+  @test
   Scenario: Positive login
     Given the user is on the home page
-    And the user populates the username field with "Elon@gmail.com"
-    And the user populates the password field with "Email1228"
+    And the user populates the username field with "Steve@gmail.com"
+    And the user populates the password field with "Test123$$"
     When the user clicks the sign-in button
-    Then user should see user verify massage "Welcome Elon"
+    Then user should see user verify massage "Welcome Steven"
+  @Smoke
 
   Scenario: Failed login with incorrect password
     Given the user is on the home page

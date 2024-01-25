@@ -4,16 +4,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserProfileAPIModel {
 
-    public class UserProfile {
-
         private int id;
+        private String dom;
+
         private String firstName;
         private String lastName;
         private String title;
         private char gender;
         private String ssn;
         private String dob;
-        private String dom;
+
         private String emailAddress;
         private String homePhone;
         private String mobilePhone;
@@ -23,16 +23,7 @@ public class UserProfileAPIModel {
         private String region;
         private String postalCode;
         private String country;
-
         private String password;
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
 
         public int getId() {
             return id;
@@ -41,6 +32,13 @@ public class UserProfileAPIModel {
         public void setId(int id) {
             this.id = id;
         }
+    public String getDom() {
+        return dom;
+    }
+
+    public void setDom(String dom) {
+        this.dom = dom;
+    }
 
         public String getFirstName() {
             return firstName;
@@ -90,13 +88,7 @@ public class UserProfileAPIModel {
             this.dob = dob;
         }
 
-        public String getDom() {
-            return dom;
-        }
 
-        public void setDom(String dom) {
-            this.dom = dom;
-        }
 
         public String getEmailAddress() {
             return emailAddress;
@@ -169,5 +161,12 @@ public class UserProfileAPIModel {
         public void setCountry(String country) {
             this.country = country;
         }
+    public String getPassword() {
+        return password;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }

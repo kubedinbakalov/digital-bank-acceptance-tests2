@@ -14,6 +14,9 @@ Feature: CreateAccount Test Scenarios
       |accountName                      |accountTypeCode|openingDeposit|ownerTypeCode|accountStandingName|
       |Steve Jobs Test Standard Checking|   SCK         |12000.00      |IND          |Open               |
     Then the following account details in the db
+      |accountName                      |accountTypeCode|openingDeposit|ownerTypeCode|accountStandingName|
+      |Steve Jobs Test Standard Checking|   SCK         |12000.00      |IND          |Open               |
+
 
 
   Scenario: Create an account with wrong Account Name

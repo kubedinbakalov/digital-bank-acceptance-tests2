@@ -46,6 +46,7 @@ public class DBUtils {
             resultSet = statement.executeQuery(sqlQuery);
 
             //getMetaData method returns info about your information.
+
             ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
             int columCount  = resultSetMetaData.getColumnCount();
 
@@ -62,6 +63,7 @@ public class DBUtils {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
         return  dbResultList;
     }
 

@@ -6,7 +6,6 @@ public class AccountStandingModel {
     private String code;
     private String name;
 
-
     public int getId() {
         return id;
     }
@@ -29,5 +28,16 @@ public class AccountStandingModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public static AccountStandingModel createDefaultA1AccountStandingModel(){
+
+        AccountStandingModel accountStandingModel = new AccountStandingModel();
+
+        accountStandingModel.setId(19);
+        accountStandingModel.setCode("A1");
+        accountStandingModel.setName("Open");
+
+        return accountStandingModel;
     }
 }

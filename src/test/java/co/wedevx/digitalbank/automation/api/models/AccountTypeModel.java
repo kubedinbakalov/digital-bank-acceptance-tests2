@@ -11,7 +11,6 @@ public class AccountTypeModel {
     private double overdraftLimit;
     private double overdraftFee;
 
-
     public int getId() {
         return id;
     }

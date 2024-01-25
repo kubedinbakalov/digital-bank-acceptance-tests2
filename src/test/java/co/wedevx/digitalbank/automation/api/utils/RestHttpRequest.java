@@ -7,11 +7,19 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class
-RestHttpRequest {
+public class RestHttpRequest {
+    /**
+     baseURI -> take from config
+     generated auth token only once per the whole test suite run.
+     apply generated auth token to all requests
+     more objectMapper to utils class to make sure we are creating the objectMapper object only once
+
+     */
+    //baseURI -> take from config
 
     public static RequestSpecification requestSpecification = RestAssured.given();
 
+    //generated auth token only once per the whole test suite run.
     //authToken is auto generated ,no need to generate it again
 
     public final static String authToken;

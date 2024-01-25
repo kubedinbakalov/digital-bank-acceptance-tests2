@@ -202,7 +202,7 @@ public class RegistrationPage extends BasePage{
                 return mobilePhoneTxt.getAttribute("validationMessage");
             case "workphone":
                 return workPhoneTxt.getAttribute("validationMessage");
-            case "termscheckmark":
+            case "termsCheckMark":
                 return agreeTermsCheckBox.getAttribute("validationMessage");
             default:
                 return null;

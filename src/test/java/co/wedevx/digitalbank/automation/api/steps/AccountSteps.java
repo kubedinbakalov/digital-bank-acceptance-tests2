@@ -1,16 +1,16 @@
 package co.wedevx.digitalbank.automation.api.steps;
 
-import co.wedevx.digitalbank.automation.api.models.AccountModel;
-import co.wedevx.digitalbank.automation.api.models.AccountResponseModel;
-import co.wedevx.digitalbank.automation.api.models.AccountTypeModel;
+import co.wedevx.digitalbank.automation.api.models.*;
 import co.wedevx.digitalbank.automation.api.utils.ObjectMapperUtils;
 import co.wedevx.digitalbank.automation.api.utils.RestHttpRequest;
+import co.wedevx.digitalbank.automation.ui.utils.DBUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -31,9 +31,8 @@ public class AccountSteps {
                 .when()
                 .post("/user/{id}/account");
 */
-
-        Response createAccountResponse = RestHttpRequest.sendPostRequestWithPathParam("/user/{id}/account",
-                "id",UserSteps.testUserId,accountRequestBodyJson);
+        Response createAccountResponse = RestHttpRequest.sendPostRequestWithPathParam("/user/{id}/account", "id",
+                UserSteps.testUserId,accountRequestBodyJson);
 
         //System.out.println(createAccountResponse.asString());
 
@@ -70,13 +69,50 @@ public class AccountSteps {
             assertEquals(expectedAccountTypeModel.getMinDeposit(),accountResponseModel.getAccountType().getMinDeposit());
             assertEquals(expectedAccountTypeModel.getOverdraftFee(),accountResponseModel.getAccountType().getOverdraftFee());
         }
-        // to validate OwnershipType,
-        // to validate AccountStanding
+        // We need to validate OwnershipType,
+
+        if(accountModelList.get(0).getOwnerTypeCode().equalsIgnoreCase("IND")){
+
+            AccountOwnershipTypeModel expectedAccountOwnershipTypeModel = AccountOwnershipTypeModel.createDefaultINDAccountOwnershipTypeModel();
+
+            assertEquals(expectedAccountOwnershipTypeModel.getId(),accountResponseModel.getOwnershipType().getId());
+            assertEquals(expectedAccountOwnershipTypeModel.getCode(),accountResponseModel.getOwnershipType().getCode());
+            assertEquals(expectedAccountOwnershipTypeModel.getName(),accountResponseModel.getOwnershipType().getName());
+        }
+        // We need to validate AccountStanding
+
+        if(accountModelList.get(0).getAccountStandingName().equalsIgnoreCase("Open")){
+
+            AccountStandingModel expctedAccountStandingModel = AccountStandingModel.createDefaultA1AccountStandingModel();
+
+            assertEquals(expctedAccountStandingModel.getId(),accountResponseModel.getAccountStanding().getId());
+            assertEquals(expctedAccountStandingModel.getCode(),accountResponseModel.getAccountStanding().getCode());
+            assertEquals(expctedAccountStandingModel.getName(),accountResponseModel.getAccountStanding().getName());
+        }
+         //We need to validate dateOpened,dateClosed,paymentDue
+             AccountResponseModel expectedAccountResponseModel = AccountResponseModel.createAccountResponseModel();
+
+        assertEquals(expectedAccountResponseModel.getDateClosed(),accountResponseModel.getDateClosed());
+        assertEquals(expectedAccountResponseModel.getPaymentDue(),accountResponseModel.getPaymentDue());
 
         }
     @Then("the following account details in the db")
-    public void the_following_account_details_in_the_db() {
+    public void the_following_account_details_in_the_db(List<Map<String,String>> exceptedAccountInfoInDBList) {
+
+        Map<String,String> exceptedAccountInfoMap = exceptedAccountInfoInDBList.get(0);
+
+        String queryAccountTable = String.format("select * from account where name ='%s' order by id desc limit 1", exceptedAccountInfoMap.get("accountName"));
+
+        List<Map<String,Object>> actualAccountInfoList = DBUtils.runSQLSelectQuery(queryAccountTable);
+
+        assertEquals(1,actualAccountInfoList.size(),"Account generated unexpected number");
+
+        Map<String,Object> actualAccountInfoMap = actualAccountInfoList.get(0);
+
+        assertEquals(exceptedAccountInfoMap.get("accountName"),actualAccountInfoMap.get("name"));
+
+        }
 
     }
-}
+
 

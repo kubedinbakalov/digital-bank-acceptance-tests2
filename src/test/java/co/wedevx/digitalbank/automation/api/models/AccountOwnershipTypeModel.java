@@ -30,4 +30,15 @@ public class AccountOwnershipTypeModel {
     public void setName(String individual) {
         this.name = name;
     }
+
+    public static AccountOwnershipTypeModel createDefaultINDAccountOwnershipTypeModel(){
+
+        AccountOwnershipTypeModel accountOwnershipTypeModel = new AccountOwnershipTypeModel();
+
+        accountOwnershipTypeModel.setId(17);
+        accountOwnershipTypeModel.setCode("IND");
+        accountOwnershipTypeModel.setName("Individual");
+
+        return accountOwnershipTypeModel;
+    }
 }

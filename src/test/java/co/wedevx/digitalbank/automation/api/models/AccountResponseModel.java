@@ -121,4 +121,14 @@ public class AccountResponseModel {
     public void setPaymentDue(String paymentDue) {
         this.paymentDue = paymentDue;
     }
+
+    public static AccountResponseModel createAccountResponseModel(){
+
+        AccountResponseModel accountResponseModel = new AccountResponseModel();
+        //accountResponseModel.setDateOpened("");
+        accountResponseModel.setDateClosed(null);
+        accountResponseModel.setPaymentDue(null);
+
+        return accountResponseModel;
+    }
 }
