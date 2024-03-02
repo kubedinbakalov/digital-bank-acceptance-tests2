@@ -198,7 +198,7 @@ public class RegistrationPage extends BasePage{
                 return countryTxt.getAttribute("validationMessage");
             case "homephone":
                 return homePhoneTxt.getAttribute("validationMessage");
-            case "mobilphone":
+            case "mobilephone":
                 return mobilePhoneTxt.getAttribute("validationMessage");
             case "workphone":
                 return workPhoneTxt.getAttribute("validationMessage");
